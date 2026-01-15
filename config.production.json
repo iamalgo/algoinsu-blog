@@ -1,0 +1,33 @@
+{
+  "url": "http://localhost:2368",
+  "server": {
+    "port": 2368,
+    "host": "127.0.0.1"
+  },
+  "database": {
+    "client": "pg",
+    "connection": {
+      "host": "<your-supabase-host>",
+      "user": "<your-supabase-user>",
+      "password": "<your-supabase-password>",
+      "database": "<your-supabase-database-name>",
+      "port": 5432,
+      "ssl": {
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "mail": {
+    "transport": "Direct"
+  },
+  "logging": {
+    "transports": [
+      "file",
+      "stdout"
+    ]
+  },
+  "process": "local",
+  "paths": {
+    "contentPath": "content"
+  }
+}

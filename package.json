@@ -1,0 +1,11 @@
+{
+    "name": "algoinsu-blog",
+    "version": "5.84.0",
+    "private": true,
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "ghost": "5.84.0"
+    }
+}
