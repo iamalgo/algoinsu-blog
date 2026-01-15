@@ -12,3 +12,5 @@ config.development.json
 
 # Keep core files but ignore built artifacts if any
 # (Ghost usually ships built files in its versions/core/frontend/public directory already)
+
+.npmrc
