@@ -7,10 +7,10 @@
   "database": {
     "client": "pg",
     "connection": {
-      "host": "<your-supabase-host>",
-      "user": "<your-supabase-user>",
-      "password": "<your-supabase-password>",
-      "database": "<your-supabase-database-name>",
+      "host": "db.oludhowqmxeccvjhuzbe.supabase.co",
+      "user": "postgres",
+      "password": "Salesman2@.",
+      "database": "postgres",
       "port": 5432,
       "ssl": {
         "rejectUnauthorized": false
