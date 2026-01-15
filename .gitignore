@@ -1,0 +1,9 @@
+ghost/current
+ghost/versions
+ghost/.ghost-cli
+ghost/content/themes/casper
+ghost/content/themes/source
+ghost/content/logs
+*.log
+node_modules
+.DS_Store

@@ -1,0 +1,46 @@
+{{!< default}} <article class="article">
+    <div class="container">
+        <header class="article-header">
+            <h1 class="article-title">{{title}}</h1>
+            <div class="article-meta">
+                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMM DD, YYYY"}}</time>
+                {{#primary_author}}
+                <span class="meta-separator">•</span>
+                <span>by {{name}}</span>
+                {{/primary_author}}
+                {{#if primary_tag}}
+                <span class="meta-separator">•</span>
+                <a href="{{primary_tag.url}}" class="tag">{{primary_tag.name}}</a>
+                {{/if}}
+            </div>
+        </header>
+
+        {{#if feature_image}}
+        <figure class="article-image">
+            <img srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
+                feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
+                sizes="(min-width: 900px) 900px, 92vw" src="{{img_url feature_image size=" xl"}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+            {{#if feature_image_caption}}
+            <figcaption>{{feature_image_caption}}</figcaption>
+            {{/if}}
+        </figure>
+        {{/if}}
+
+        <div class="article-content">
+            {{content}}
+        </div>
+
+        <footer class="article-footer">
+            {{#if @site.members_enabled}}
+            {{#unless @member}}
+            <div class="newsletter-box">
+                <h3>Subscribe to our newsletter</h3>
+                <p>Get the latest posts delivered right to your inbox</p>
+                <a href="{{@site.url}}/signup" class="btn-signup">Subscribe Now</a>
+            </div>
+            {{/unless}}
+            {{/if}}
+        </footer>
+    </div>
+    </article>

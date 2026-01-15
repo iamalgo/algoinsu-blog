@@ -1,0 +1,24 @@
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h3>{{@site.title}}</h3>
+            <p>{{@site.description}}</p>
+        </div>
+        <div class="footer-links">
+            {{#if @site.navigation}}
+                <ul>
+                    {{#foreach @site.navigation}}
+                        <li><a href="{{url}}">{{label}}</a></li>
+                    {{/foreach}}
+                </ul>
+            {{/if}}
+        </div>
+        <div class="footer-social">
+            {{#if @site.twitter}}<a href="{{@site.twitter}}" target="_blank">Twitter</a>{{/if}}
+            {{#if @site.facebook}}<a href="{{@site.facebook}}" target="_blank">Facebook</a>{{/if}}
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; {{date format="YYYY"}} {{@site.title}}. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
