@@ -1,10 +1,14 @@
-current
-versions
-.ghost-cli
-content/themes/casper
-content/themes/source
-content/logs
-*.log
+# Local development state
 node_modules
-.DS_Store
 .a0proj
+.ghost-cli
+*.log
+.DS_Store
+
+# Ghost local state
+content/logs
+content/data/ghost.db
+config.development.json
+
+# Keep core files but ignore built artifacts if any
+# (Ghost usually ships built files in its versions/core/frontend/public directory already)
