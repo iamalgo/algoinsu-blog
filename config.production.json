@@ -2,7 +2,7 @@
   "url": "http://localhost:2368",
   "server": {
     "port": 2368,
-    "host": "127.0.0.1"
+    "host": "0.0.0.0"
   },
   "database": {
     "client": "pg",
@@ -28,6 +28,6 @@
   },
   "process": "local",
   "paths": {
-    "contentPath": "content"
+    "contentPath": "/var/lib/ghost/content"
   }
 }
