@@ -1,3 +1,4 @@
+# Redeploy trigger: 2026-01-16 13:04
 [build]
 builder = "dockerfile"
 dockerfilePath = "Dockerfile"
