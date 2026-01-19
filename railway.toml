@@ -4,13 +4,12 @@ builder = "dockerfile"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-healthcheckPath = "/"
+healthcheckPath = "/health"
 healthcheckTimeout = 120
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
 
 [vars]
-url = "https://${{RAILWAY_PUBLIC_DOMAIN}}"
 database__client = "mysql"
 database__connection__host = "${{MYSQLHOST}}"
 database__connection__user = "${{MYSQLUSER}}"

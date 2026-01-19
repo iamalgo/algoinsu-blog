@@ -1,5 +1,5 @@
 {
-    "url": "https://algoinsu-blog-production.up.railway.app",
+    "url": "GHOST_URL_PLACEHOLDER",
     "server": {
         "port": 2368,
         "host": "0.0.0.0"
@@ -9,7 +9,7 @@
         "connection": {
             "host": "MYSQL_HOST_PLACEHOLDER",
             "port": 3306,
-            "user": "root",
+            "user": "MYSQL_USER_PLACEHOLDER",
             "password": "MYSQL_PASSWORD_PLACEHOLDER",
             "database": "MYSQL_DATABASE_PLACEHOLDER"
         }
