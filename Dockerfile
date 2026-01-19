@@ -22,9 +22,10 @@ RUN echo '#!/bin/sh' > /startup.sh && \
     echo 'export database__client=sqlite3' >> /startup.sh && \
     echo 'export database__connection__filename=/var/lib/ghost/content/data/ghost.db' >> /startup.sh && \
     echo 'echo "Starting Ghost with Environment Config..."' >> /startup.sh && \
-    # We run Ghost with NODE_ENV=production (fixes some SQLite write issues) 
-    # and force logs to stdout/stderr so we can see them.
-    echo 'exec NODE_ENV=production docker-entrypoint.sh node current/index.js --log="stdout,stderr"' >> /startup.sh && \
+    # Set NODE_ENV separately to avoid exec errors
+    echo 'export NODE_ENV=production' >> /startup.sh && \
+    # Removed quotes around log flags for better sh compatibility
+    echo 'exec docker-entrypoint.sh node current/index.js --log=stdout,stderr' >> /startup.sh && \
     chmod +x /startup.sh
 
 WORKDIR /var/lib/ghost
