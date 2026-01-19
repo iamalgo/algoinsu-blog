@@ -10,22 +10,23 @@ COPY config.production.json /tmp/config.template.json
 RUN echo '#!/bin/sh' > /startup.sh && \
     echo 'set -e' >> /startup.sh && \
     echo 'echo "Cleaning up old config files..."' >> /startup.sh && \
-    # Aggressively remove any existing config files to ensure we start fresh
     echo 'rm -f /var/lib/ghost/config.production.json' >> /startup.sh && \
     echo 'rm -f /var/lib/ghost/config.development.json' >> /startup.sh && \
-    # Configure Ghost via Environment Variables (bypasses JSON parsing)
     echo 'export url="https://$RAILWAY_PUBLIC_DOMAIN"' >> /startup.sh && \
     echo 'export process=local' >> /startup.sh && \
     echo 'export server__host=0.0.0.0' >> /startup.sh && \
     echo 'export server__port=2368' >> /startup.sh && \
     echo 'export paths__contentPath=/var/lib/ghost/content' >> /startup.sh && \
     echo 'export database__client=sqlite3' >> /startup.sh && \
-    echo 'export database__connection__filename=/var/lib/ghost/content/data/ghost.db' >> /startup.sh && \
-    echo 'echo "Starting Ghost with Environment Config..."' >> /startup.sh && \
-    # Set NODE_ENV separately to avoid exec errors
+    # Path updated to root of content folder
+    echo 'export database__connection__filename=/var/lib/ghost/content/ghost.db' >> /startup.sh && \
     echo 'export NODE_ENV=production' >> /startup.sh && \
-    # Removed quotes around log flags for better sh compatibility
-    echo 'exec docker-entrypoint.sh node current/index.js --log=stdout,stderr' >> /startup.sh && \
+    echo 'echo "Initializing Database..."' >> /startup.sh && \
+    # Manually run migrations to set up the database
+    echo 'npx knex-migrator-migrate --init --mgpath /var/lib/ghost/current' >> /startup.sh && \
+    echo 'echo "Starting Ghost..."' >> /startup.sh && \
+    # Run Ghost directly with logging enabled
+    echo 'exec node current/index.js --log=stdout,stderr' >> /startup.sh && \
     chmod +x /startup.sh
 
 WORKDIR /var/lib/ghost
