@@ -4,25 +4,6 @@
         "port": 2368,
         "host": "0.0.0.0"
     },
-    "database": {
-        "client": "mysql",
-        "connection": {
-            "host": "MYSQL_HOST_PLACEHOLDER",
-            "user": "MYSQL_USER_PLACEHOLDER",
-            "password": "MYSQL_PASSWORD_PLACEHOLDER",
-            "database": "MYSQL_DATABASE_PLACEHOLDER"
-        }
-    },
-    "mail": {
-        "transport": "Direct"
-    },
-    "logging": {
-        "transports": [
-            "file",
-            "stdout"
-        ]
-    },
-    "process": "systemd",
     "paths": {
         "contentPath": "/var/lib/ghost/content"
     }
