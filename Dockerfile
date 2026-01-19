@@ -19,10 +19,11 @@ RUN echo '#!/bin/sh' > /startup.sh && \
     echo 'export paths__contentPath=/var/lib/ghost/content' >> /startup.sh && \
     echo 'export database__client=sqlite3' >> /startup.sh && \
     echo 'export database__connection__filename=/var/lib/ghost/content/ghost.db' >> /startup.sh && \
-    echo 'export NODE_ENV=production' >> /startup.sh && \
-    echo 'echo "Starting Ghost..."' >> /startup.sh && \
-    # Run Ghost directly. It will auto-migrate the DB on first run.
-    # We redirect stderr to stdout (2>&1) to ensure logs appear in Railway.
+    # Ensure the database directory exists
+    echo 'mkdir -p /var/lib/ghost/content' >> /startup.sh && \
+    # Switch to development mode to FORCE console logs
+    echo 'export NODE_ENV=development' >> /startup.sh && \
+    echo 'echo "Starting Ghost in Development Mode..."' >> /startup.sh && \
     echo 'exec node current/index.js 2>&1' >> /startup.sh && \
     chmod +x /startup.sh
 
