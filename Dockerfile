@@ -18,15 +18,12 @@ RUN echo '#!/bin/sh' > /startup.sh && \
     echo 'export server__port=2368' >> /startup.sh && \
     echo 'export paths__contentPath=/var/lib/ghost/content' >> /startup.sh && \
     echo 'export database__client=sqlite3' >> /startup.sh && \
-    # Path updated to root of content folder
     echo 'export database__connection__filename=/var/lib/ghost/content/ghost.db' >> /startup.sh && \
     echo 'export NODE_ENV=production' >> /startup.sh && \
-    echo 'echo "Initializing Database..."' >> /startup.sh && \
-    # Manually run migrations to set up the database
-    echo 'npx knex-migrator-migrate --init --mgpath /var/lib/ghost/current' >> /startup.sh && \
     echo 'echo "Starting Ghost..."' >> /startup.sh && \
-    # Run Ghost directly with logging enabled
-    echo 'exec node current/index.js --log=stdout,stderr' >> /startup.sh && \
+    # Run Ghost directly. It will auto-migrate the DB on first run.
+    # We redirect stderr to stdout (2>&1) to ensure logs appear in Railway.
+    echo 'exec node current/index.js 2>&1' >> /startup.sh && \
     chmod +x /startup.sh
 
 WORKDIR /var/lib/ghost
